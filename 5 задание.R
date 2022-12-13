@@ -213,7 +213,7 @@ new2 <- filter(Hc, betweenness >= 51.2)
 can <- full_join(can, new2)
 
 cancerbio <- ggraph(cbio.graph.c) +
-  geom_edge_link(aes(color = cor, width = cor))  +
+  geom_edge_link(aes(color = cor, width = cor/2))  +
   geom_node_point(aes(size = hub))  +
   geom_node_text(aes(label = name, size = betweenness, color = group), repel = TRUE)  +
   theme_graph() +
@@ -223,6 +223,9 @@ ggsave(filename = "cancer.png",
        plot = cancerbio, scale = 10)
 
 
+#directed = TRUE поменять на фолс, выгрузить полныетаблички с битвинесс и групп и на них отметить верх 5% и группы, 
+#geom_node_point(aes(size = hub)) продлогорифмировать, поделить кор на 2 geom_edge_link(aes(color = cor, width = cor/2))
+#geom_node_text(aes(label = name, size = betweenness, color = group), repel = TRUE) исправляем нейм на иф елс 
 
 
 
